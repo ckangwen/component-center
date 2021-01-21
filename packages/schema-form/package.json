@@ -1,0 +1,9 @@
+{
+  "name": "@ckangwen/schema-form",
+  "version": "1.0.0",
+  "description": "基于对象生成表单组件",
+  "main": "index.js",
+  "repository": "https://github.com/ckangwen/component-center",
+  "author": "ckangwen",
+  "license": "MIT"
+}
