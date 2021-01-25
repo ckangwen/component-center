@@ -87,7 +87,8 @@ describe("Crud", () => {
   describe("基础使用", () => {
     const wrapper = createTable({
       columns,
-      columnData: data
+      columnData: data,
+      props: ':showExtraColumn="false"'
     });
     it("表头数据", () => {
       expect(wrapper.exists()).toBe(true);
@@ -186,7 +187,7 @@ describe("Crud", () => {
       const wrapper = createTable({
         columns,
         columnData: data,
-        props: ':theadContent="theadContent"',
+        props: ':theadContent="theadContent" :showExtraColumn="false"',
         methods: {
           theadContent
         }

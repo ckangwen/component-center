@@ -44,7 +44,7 @@ export default {
      */
     showExtraColumn: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
   data() {
