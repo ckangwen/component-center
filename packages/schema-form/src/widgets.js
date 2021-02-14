@@ -1,20 +1,20 @@
 import Select from "./widgets/select/index";
+import Checkbox from "./widgets/checkbox/checkbox.vue";
+import CheckboxButton from "./widgets/checkbox/button.vue";
+import Radio from "./widgets/radio/radio.vue";
+import RadioButton from "./widgets/radio/button.vue";
 
 const baseMap = {
-  checkbox: "el-checkbox",
-  button: "el-button",
-  row: "el-row",
-  col: "el-col",
-  form: "el-form",
-  formItem: "el-form-item",
-  layout: "el-container",
-  text: "el-input",
   string: "el-input",
   boolean: "el-switch",
-  number: "el-input-number",
-  radio: "el-radio",
+  number: "el-input",
+  array: Checkbox,
+  "checkbox-button": CheckboxButton,
+  radio: Radio,
+  "radio-button": RadioButton,
   select: Select,
-  enum: Select
+  enum: Select,
+  any: "el-input"
 };
 
 export const componentMap = new Map();

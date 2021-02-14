@@ -7,7 +7,7 @@ export default {
     /* 如果是boolean，表示启用详细模式，如果是一个数组，表示详细区域需要展示的列 */
     expand: [Array, Boolean],
     loading: Boolean,
-    loadingOptions: Boolean,
+    loadingOptions: Object,
     /* 详细区域的props */
     expandOptions: Object,
     /* 额外的列的props */
