@@ -1,14 +1,27 @@
 <template>
   <el-form :model="formData" :rules="rules" v-bind="formProps">
-    <el-row>
+    <template v-if="layout">
+      <el-row>
+        <schema-field
+          v-for="(item, index) in computedFields"
+          :key="index"
+          :schema="item"
+          :value="formData[item.property]"
+          :layout="layout"
+          @input="onInput"
+        ></schema-field>
+      </el-row>
+    </template>
+    <template v-else>
       <schema-field
         v-for="(item, index) in computedFields"
         :key="index"
         :schema="item"
         :value="formData[item.property]"
         @input="onInput"
+        :layout="layout"
       ></schema-field>
-    </el-row>
+    </template>
   </el-form>
 </template>
 <script>
@@ -50,6 +63,10 @@ export default {
       default() {
         return {};
       }
+    },
+    layout: {
+      type: Boolean,
+      default: false
     }
   },
   data() {

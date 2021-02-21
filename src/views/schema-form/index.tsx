@@ -1,15 +1,44 @@
 import { Vue, Component } from "vue-property-decorator";
 import SchemaForm from "@packages/schema-form";
 import StyleComp from "@/components/style/index.vue";
+import ObjectArray from "@/components/ObjectArray.vue";
+
+const CellSettings = {
+  title: {
+    title: "title",
+    type: "string"
+  },
+  icon: {
+    title: "icon",
+    type: "string",
+    default: "star-o"
+  },
+  "is-link": {
+    title: "is-link",
+    type: "boolean",
+    default: true
+  }
+};
+
+const CellGroupSettings = {
+  cellSettings: {
+    title: "cell settings",
+    type: "ObjectArray",
+    properties: CellSettings,
+    default: []
+  }
+};
 
 @Component({
   name: "SchemaFormPage",
   components: {
-    SchemaForm
+    SchemaForm,
+    ObjectArray
   }
 })
 export default class SchemaFormPage extends Vue {
   inputSchema = {
+    objectArrat: CellGroupSettings.cellSettings,
     name: {
       type: "string",
       title: "String",
@@ -66,15 +95,30 @@ export default class SchemaFormPage extends Vue {
   inputValue = {
     name: "NAME",
     age: "",
-    select: ["111"]
+    select: ["111"],
+    objectArrat: [] as any[]
   };
+  get text() {
+    return JSON.stringify(this.inputValue, null, 2);
+  }
+
+  updateObjectArray() {
+    this.inputValue.objectArrat = [
+      {
+        title: 'TITLE',
+        icon: 'ICON',
+        "is-link": true
+      }
+    ]
+  }
   widgets = {
-    style: StyleComp
+    style: StyleComp,
+    ObjectArray
   };
 
   render() {
     return (
-      <el-container>
+      <div>
         <el-card header="测试string类型">
           <schema-form
             schema={this.inputSchema}
@@ -83,8 +127,7 @@ export default class SchemaFormPage extends Vue {
           ></schema-form>
           <el-divider></el-divider>
 
-          <p class="text type-string">{this.inputValue.name}</p>
-          <p class="text type-number">{this.inputValue.age}</p>
+          <p class="text type-string">{this.text}</p>
         </el-card>
 
         <el-button
@@ -94,7 +137,12 @@ export default class SchemaFormPage extends Vue {
         >
           update
         </el-button>
-      </el-container>
+        <el-button
+          onClick={this.updateObjectArray}
+        >
+          更新数组
+        </el-button>
+      </div>
     );
   }
 }
