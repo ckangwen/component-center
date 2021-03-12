@@ -1,6 +1,6 @@
 {
   "name": "@ckangwen/schema-form",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "基于对象生成表单组件",
   "main": "src/index.js",
   "types": "index.d.ts",
